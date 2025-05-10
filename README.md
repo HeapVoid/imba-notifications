@@ -30,15 +30,18 @@ import { Notifications, ShowNotifications } from 'imba-notifications'
 const notify = new Notifications!
 # Define the hint over the progress bar (could be empty)
 notify.hint = 'Click the message to avoid timeout and view details'
+# Mount notifications separately from the main application tag
+imba.mount <ShowNotifications state=notify>
 
 # In your main app or component
 tag App
     <self>
-        <ShowNotifications state=notify>
         <button @click=notify.success('Success!', 'Operation completed successfully')> "Show Success"
         <button @click=notify.info('Info', 'This is an informational message')> "Show Info"
         <button @click=notify.caution('Caution', 'Proceed with care')> "Show Caution"
         <button @click=notify.error('Error', 'Something went wrong')> "Show Error"
+
+imba.mount <App>
 ```
 
 ## 📘 API Reference
@@ -80,7 +83,7 @@ Parameters:
 The `ShowNotifications` tag is responsible for rendering notifications from a given Notifications class instance.
 
 ```imba
-<ShowNotifications state=notifications>
+imba.mount <ShowNotifications state=notifications>
 ```
 
 ## ⚙️ Customization
@@ -141,11 +144,14 @@ tag CustomNotifications < ShowNotifications
                 to transform: translateY(0)
 
 # Use your custom component
+const notifications = new Notifications()
+imba.mount <CustomNotifications state=notifications>
+
 tag App
-    const notifications = new Notifications()
     <self>
-        <CustomNotifications state=notifications>
         <button @click=notifications.success('Custom', 'This uses custom styling')> "Show Notification"
+
+imba.mount <App>
 ```
 
 ### 🎯 Modifying Specific Classes

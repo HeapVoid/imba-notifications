@@ -1,6 +1,6 @@
 {
-  "name": "imba-localization",
-  "version": "0.0.1",
+  "name": "imba-notifications",
+  "version": "0.0.2",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/HeapVoid/imba-notifications.git"
