@@ -1,0 +1,22 @@
+{
+  "name": "imba-localization",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HeapVoid/imba-notifications.git"
+  },
+  "main": "index.imba",
+  "module": "index.imba",
+  "browser": "index.imba",
+  "devDependencies": {
+    "imba": "latest",
+    "bimba-cli": "latest"
+  },
+  "description": "A lightweight, customizable notification system for Imba applications with smooth animations and a clean user interface.",
+  "keywords": ["imba", "notifications", "toaster"],
+  "license": "MIT",
+  "type": "module",
+  "files": [
+    "index.imba"
+  ]
+}
