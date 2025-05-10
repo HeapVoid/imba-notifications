@@ -188,6 +188,53 @@ The notification component uses the following CSS classes that you can customize
 - `.footer` - Footer containing the hint text and progress bar
 - `.show`, `.hide`, `.wipe` - Animation state classes
 
+## 🧰 Additional Function and Icons
+
+The package exports additional utilities that developers can use in their applications:
+
+### ⏲️ Timeout Function
+
+A Promise-based timeout function for creating delays in async operations:
+
+```imba
+import { timeout } from 'imba-notifications'
+
+# Usage in async functions
+def myAsyncFunction
+    # Do something
+    await timeout(500) # Wait for 500ms
+    # Continue execution
+```
+
+### 🎭 Icons
+
+The package exports SVG icons that you can use in your application:
+
+```imba
+import { 
+    SuccessIcon, 
+    InfoIcon, 
+    CautionIcon, 
+    ErrorIcon, 
+    CloseIcon 
+} from 'imba-notifications'
+
+tag MyComponent
+    <self>
+        css d:hcc
+        <SuccessIcon [fill:emerald5]>
+        <InfoIcon>
+            css fill:orange
+        <CautionIcon>
+            css fill:orange w:32px
+        <ErrorIcon>
+            css w:"16px"
+        <CloseIcon>
+            css bgc:blue fill:white
+```
+
+All icons are SVG-based and can be styled using Imba's CSS syntax.
+
 ## 👥 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
