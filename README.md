@@ -24,10 +24,11 @@ bun add imba-notifications
 ## 🚀 Quick Start
 
 ```imba
-import { Notifications, ShowNotifications } from 'imba-notifications'
+import { Notifications } from 'imba-notifications'
+import { ShowNotifications } from 'imba-notifications/components'
 
 # Create a notifications instance
-const notify = new Notifications!
+const notify = new Notifications(imba.commit)
 # Define the hint over the progress bar (could be empty)
 notify.hint = 'Click the message to avoid timeout and view details'
 # Mount notifications separately from the main application tag
@@ -91,7 +92,7 @@ imba.mount <ShowNotifications state=notifications>
 You can customize the duration settings:
 
 ```imba
-const notifications = new Notifications!
+const notifications = new Notifications(imba.commit)
 
 # Customize durations (in milliseconds)
 notifications.duration = {
@@ -114,7 +115,7 @@ The notifications use Imba's CSS syntax with light/dark mode support. You can cu
 To customize the notification component, create a new tag that inherits from the base component:
 
 ```imba
-import { ShowNotifications } from 'imba-notifications'
+import { ShowNotifications } from 'imba-notifications/components'
 
 # Create a custom notifications component
 tag CustomNotifications < ShowNotifications
@@ -144,7 +145,7 @@ tag CustomNotifications < ShowNotifications
                 to transform: translateY(0)
 
 # Use your custom component
-const notifications = new Notifications()
+const notifications = new Notifications(imba.commit)
 imba.mount <CustomNotifications state=notifications>
 
 tag App
@@ -217,7 +218,7 @@ import {
     CautionIcon, 
     ErrorIcon, 
     CloseIcon 
-} from 'imba-notifications'
+} from 'imba-notifications/components'
 
 tag MyComponent
     <self>
