@@ -24,14 +24,14 @@ bun add imba-notifications
 ## 🚀 Quick Start
 
 ```imba
-import { NotificationsState, ShowNotifications } from 'imba-notifications'
+import { NotificationsState, NotificationsShow } from 'imba-notifications'
 
 # Create a notifications instance
 const notify = new NotificationsState(imba.commit)
 # Define the hint over the progress bar (could be empty)
 notify.hint = 'Click the message to avoid timeout and view details'
 # Mount notifications separately from the main application tag
-imba.mount <ShowNotifications state=notify>
+imba.mount <NotificationsShow state=notify>
 
 # In your main app or component
 tag App
@@ -79,12 +79,12 @@ Parameters:
 - `text` (string) - Body text for the notification (appears only when the notification is clicked)
 - `details` (string, optional) - Additional details shown when the notification is clicked
 
-### ShowNotifications Component
+### NotificationsShow Component
 
-The `ShowNotifications` tag is responsible for rendering notifications from a given NotificationsState class instance.
+The `NotificationsShow` tag is responsible for rendering notifications from a given NotificationsState class instance.
 
 ```imba
-imba.mount <ShowNotifications state=notifications>
+imba.mount <NotificationsShow state=notifications>
 ```
 
 ## ⚙️ Customization
@@ -116,10 +116,10 @@ The notifications use Imba's CSS syntax with light/dark mode support. You can cu
 To customize the notification component, create a new tag that inherits from the base component:
 
 ```imba
-import { NotificationsState, ShowNotifications } from 'imba-notifications'
+import { NotificationsState, NotificationsShow } from 'imba-notifications'
 
 # Create a custom notifications component
-tag CustomNotifications < ShowNotifications
+tag CustomNotifications < NotificationsShow
     # Override CSS definitions
     css
         .container
@@ -161,7 +161,7 @@ imba.mount <App>
 To target specific notification types with different styles:
 
 ```imba
-tag CustomNotifications < ShowNotifications
+tag CustomNotifications < NotificationsShow
     css
         # Success notifications
         .container:has(.header-icon-success)

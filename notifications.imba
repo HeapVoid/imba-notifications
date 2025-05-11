@@ -80,7 +80,7 @@ export tag CloseIcon
 # --------------------------------------------------
 # Visual component to display notifications
 # --------------------------------------------------
-export tag ShowNotifications
+export tag NotificationsShow
 	state
 	icons = [SuccessIcon, InfoIcon, CautionIcon, ErrorIcon, CloseIcon]
 	type = ['success', 'info', 'caution', 'error']
