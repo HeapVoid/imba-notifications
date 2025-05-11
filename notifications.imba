@@ -179,11 +179,13 @@ export tag NotificationsShow
 						<{icons[notification.type]}.header-icon .{"header-icon-{type[notification.type]}"}>
 						<div.header-text> notification.header
 						<{icons[4]}.header-close @click.trap=notification.hide>
-					<div.timer [o:0 ease:calc(var(--expand) / 4)]=notification.clicked> state.hint
 					<div.body-container [gtr:1fr]=notification.clicked [gtr:0fr]=!notification.clicked>
 						<div [of:hidden]>
 							<div.body-text> notification.text
 							if notification.details
 								<div.body-details> notification.details
-							<div.body-footer> #  [d:none]=!notification.clicked>
+							<div.body-footer>
+					if !notification.clicked
+						<div.timer [py@off:0px my@off:0px h@off:0px ead:var(--expand)] ease> state.hint
+					
 
