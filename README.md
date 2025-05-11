@@ -56,6 +56,7 @@ imba.mount <App>
   - `display` - Time to remain visible (default: 15000ms)
   - `hide` - Time to animate out (default: 500ms)
   - `wipe` - Time to remove from DOM (default: 500ms)
+  - `expand` - Time to animate notification expanding on click (default: 200ms)
 - `hint` - Text shown at the bottom of notifications (default is empty)
 
 #### Methods
@@ -100,6 +101,7 @@ notifications.duration = {
     display: 5000  # Time visible
     hide: 300      # Animation out
     wipe: 300      # DOM removal
+    expand: 100    # Expanding notification
 }
 
 # Customize hint text
@@ -186,7 +188,8 @@ The notification component uses the following CSS classes that you can customize
 - `.body-container` - Container for notification body (shown when clicked)
 - `.body-text` - Main notification message text
 - `.body-details` - Detailed information container
-- `.footer` - Footer containing the hint text and progress bar
+- `.body-footer` - Used mainly as a bottom margin of the body
+- `.timer` - The timeout containing the hint text and progress bar (before clicked)
 - `.show`, `.hide`, `.wipe` - Animation state classes
 
 ## 🧰 Additional Function and Icons

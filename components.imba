@@ -38,6 +38,7 @@ export tag ShowNotifications
 		style.setProperty("--display", "{state.duration.display || 15000}ms")
 		style.setProperty("--hide", "{state.duration.hide || 500}ms")
 		style.setProperty("--wipe", "{state.duration.wipe || 500}ms")
+		style.setProperty("--expand", "{state.duration.expand || 200}ms")
 
 	css
 		.container 
@@ -70,16 +71,19 @@ export tag ShowNotifications
 			fill:light-dark(black, white) 
 			bgc@hover:light-dark(black/20, white/20)
 		.body-container 
-			ml:44px mr:36px mb:15px
+			d:grid tween:grid-template-rows var(--expand) ease
+			ml:44px mr:36px
 		.body-text 
 			fs:12px fw:normal 
 			c:light-dark(black/80, white/60)
 		.body-details 
-			w:100% mt:15px p:10px rd:4px 
+			w:100% mt:15px p:10px rd:4px
 			bgc:light-dark(black/5, white/10) 
 			fs:11px fw:normal
 			c:light-dark(black, white/90)
-		.footer 
+		.body-footer
+			mb:15px
+		.timer 
 			pos:rel 
 			px:10px py:2px w:100% ta:center
 			fs:11px fw:normal 
@@ -121,11 +125,10 @@ export tag ShowNotifications
 						<{icons[notification.type]}.header-icon .{"header-icon-{type[notification.type]}"}>
 						<div.header-text> notification.header
 						<{icons[4]}.header-close @click.trap=notification.hide>
-					if !notification.clicked
-						<div.footer> state.hint
-					else
-						<div.body-container>
-							css ead:10s
+					<div.timer [o:0 ease:calc(var(--expand) / 4)]=notification.clicked> state.hint
+					<div.body-container [gtr:1fr]=notification.clicked [gtr:0fr]=!notification.clicked>
+						<div [of:hidden]>
 							<div.body-text> notification.text
 							if notification.details
 								<div.body-details> notification.details
+							<div.body-footer> #  [d:none]=!notification.clicked>

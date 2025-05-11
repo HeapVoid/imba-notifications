@@ -6,6 +6,7 @@ export class Notifications
 		display: 15000
 		hide: 500
 		wipe: 500
+		expand: 200
 	}
 	counter = 0
 	queue = []
