@@ -1,36 +1,18 @@
 {
   "name": "imba-notifications",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/HeapVoid/imba-notifications.git"
   },
-  "main": "index.js",
-  "module": "index.js",
-  "browser": "index.js",
-  "devDependencies": {
-    "imba": "latest",
-    "bimba-cli": "latest"
-  },
-  "scripts": {
-    "bundle": "bunx bimba index.imba --outdir . --minify",
-    "pub": "bunx bimba index.imba --outdir . --minify && bun publish"
-  },
+  "main": "notifications.imba",
+  "module": "notifications.imba",
+  "browser": "notifications.imba",
   "description": "A lightweight, customizable notification system for Imba applications with smooth animations and a clean user interface.",
   "keywords": ["imba", "notifications", "toaster"],
   "license": "MIT",
   "type": "module",
   "files": [
-    "index.imba",
-    "index.js",
-    "components.imba",
-    "components.d.ts"
-  ],
-  "exports": {
-    ".": "./index.js",
-    "./components": {
-      "import": "./components.imba",
-      "types": "./components.d.ts"
-    }
-  }
+    "notifications.imba"
+  ]
 }

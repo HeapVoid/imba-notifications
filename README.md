@@ -24,11 +24,10 @@ bun add imba-notifications
 ## 🚀 Quick Start
 
 ```imba
-import { Notifications } from 'imba-notifications'
-import { ShowNotifications } from 'imba-notifications/components'
+import { NotificationsState, ShowNotifications } from 'imba-notifications'
 
 # Create a notifications instance
-const notify = new Notifications(imba.commit)
+const notify = new NotificationsState(imba.commit)
 # Define the hint over the progress bar (could be empty)
 notify.hint = 'Click the message to avoid timeout and view details'
 # Mount notifications separately from the main application tag
@@ -82,7 +81,7 @@ Parameters:
 
 ### ShowNotifications Component
 
-The `ShowNotifications` tag is responsible for rendering notifications from a given Notifications class instance.
+The `ShowNotifications` tag is responsible for rendering notifications from a given NotificationsState class instance.
 
 ```imba
 imba.mount <ShowNotifications state=notifications>
@@ -93,7 +92,7 @@ imba.mount <ShowNotifications state=notifications>
 You can customize the duration settings:
 
 ```imba
-const notifications = new Notifications(imba.commit)
+const notifications = new NotificationsState(imba.commit)
 
 # Customize durations (in milliseconds)
 notifications.duration = {
@@ -117,7 +116,7 @@ The notifications use Imba's CSS syntax with light/dark mode support. You can cu
 To customize the notification component, create a new tag that inherits from the base component:
 
 ```imba
-import { ShowNotifications } from 'imba-notifications/components'
+import { NotificationsState, ShowNotifications } from 'imba-notifications'
 
 # Create a custom notifications component
 tag CustomNotifications < ShowNotifications
@@ -147,7 +146,7 @@ tag CustomNotifications < ShowNotifications
                 to transform: translateY(0)
 
 # Use your custom component
-const notifications = new Notifications(imba.commit)
+const notifications = new NotificationsState(imba.commit)
 imba.mount <CustomNotifications state=notifications>
 
 tag App
@@ -221,7 +220,7 @@ import {
     CautionIcon, 
     ErrorIcon, 
     CloseIcon 
-} from 'imba-notifications/components'
+} from 'imba-notifications'
 
 tag MyComponent
     <self>
