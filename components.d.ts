@@ -1,4 +1,4 @@
-declare module 'imba-localization/components' {
+declare module 'imba-notifications/components' {
     export const ShowNotifications: class;
     export const SuccessIcon: class;
     export const InfoIcon: class;
