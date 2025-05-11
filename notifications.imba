@@ -135,6 +135,7 @@ export tag NotificationsShow
 			bgc:light-dark(black/5, white/10) 
 			fs:11px fw:normal
 			c:light-dark(black, white/90)
+			overflow-wrap:break-word word-wrap:break-word ws:normal
 		.body-footer
 			mb:15px
 		.timer 
