@@ -141,7 +141,7 @@ export tag NotificationsShow
 		.timer 
 			pos:rel 
 			px:10px py:2px w:100% ta:center
-			fs:11px fw:normal 
+			fs:11px fw:normal ws:nowrap of:hidden tof:ellipsis
 			c:light-dark(black/70, white/70)
 			bgc:light-dark(black/5, white/10)
 			@before
