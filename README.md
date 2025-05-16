@@ -24,22 +24,22 @@ bun add imba-notifications
 ## 🚀 Quick Start
 
 ```imba
-import { NotificationsState, NotificationsShow } from 'imba-notifications'
+import { Notifications } from 'imba-notifications'
 
 # Create a notifications instance
-const notify = new NotificationsState(imba.commit)
+const notify = new Notifications!
 # Define the hint over the progress bar (could be empty)
 notify.hint = 'Click the message to avoid timeout and view details'
-# Mount notifications separately from the main application tag
-imba.mount <NotificationsShow state=notify>
+# Mount notifications center separately from the main application tag
+imba.mount <notifications-center state=notify>
 
 # In your main app or component
 tag App
     <self>
-        <button @click=notify.success('Success!', 'Operation completed successfully')> "Show Success"
-        <button @click=notify.info('Info', 'This is an informational message')> "Show Info"
-        <button @click=notify.caution('Caution', 'Proceed with care')> "Show Caution"
-        <button @click=notify.error('Error', 'Something went wrong')> "Show Error"
+        <button @click=notify.success({header: 'Success!', text: 'Operation completed successfully'})> "Show Success"
+        <button @click=notify.info({header: 'Info', text: 'This is an informational message'})> "Show Info"
+        <button @click=notify.caution({header: 'Caution', text: 'Proceed with care'})> "Show Caution"
+        <button @click=notify.error({header: 'Error', text: 'Something went wrong'})> "Show Error"
 
 imba.mount <App>
 ```
@@ -57,34 +57,35 @@ imba.mount <App>
   - `wipe` - Time to remove from DOM (default: 500ms)
   - `expand` - Time to animate notification expanding on click (default: 200ms)
 - `hint` - Text shown at the bottom of notifications (default is empty)
+- `header` - Key to use for header text in the passed object (default is 'header') 
+- `text` - Key to use for body text in the passed object (default is 'text')
 
 #### Methods
 
 ```imba
 # Display a success notification
-notify.success(header, text, details = '')
+notify.success({header: 'Success!', text: 'Operation completed successfully'}, details = '')
 
 # Display an info notification
-notify.info(header, text, details = '')
+notify.info({header: 'Info', text: 'This is an informational message'}, details = '')
 
 # Display a caution notification
-notify.caution(header, text, details = '')
+notify.caution({header: 'Caution', text: 'Proceed with care'}, details = '')
 
 # Display an error notification
-notify.error(header, text, details = '')
+notify.error({header: 'Error', text: 'Something went wrong'}, details = '')
 ```
 
 Parameters:
-- `header` (string) - Bold title text for the notification
-- `text` (string) - Body text for the notification (appears only when the notification is clicked)
+- `message` (object) - should consist of two keys: `header` and `text` (or appropriate keys defined in `header` and `text` properties)
 - `details` (string, optional) - Additional details shown when the notification is clicked
 
 ### NotificationsShow Component
 
-The `NotificationsShow` tag is responsible for rendering notifications from a given NotificationsState class instance.
+The `<notifications-center>` tag is responsible for rendering notifications from a given Notifications class instance.
 
 ```imba
-imba.mount <NotificationsShow state=notifications>
+imba.mount <notifications-center state=notifications>
 ```
 
 ## ⚙️ Customization
@@ -92,7 +93,7 @@ imba.mount <NotificationsShow state=notifications>
 You can customize the duration settings:
 
 ```imba
-const notifications = new NotificationsState(imba.commit)
+const notifications = new Notifications!
 
 # Customize durations (in milliseconds)
 notifications.duration = {
@@ -116,10 +117,10 @@ The notifications use Imba's CSS syntax with light/dark mode support. You can cu
 To customize the notification component, create a new tag that inherits from the base component:
 
 ```imba
-import { NotificationsState, NotificationsShow } from 'imba-notifications'
+import { Notifications } from 'imba-notifications'
 
 # Create a custom notifications component
-tag CustomNotifications < NotificationsShow
+tag custom-notifications < notifications-center
     # Override CSS definitions
     css
         .container
@@ -146,32 +147,25 @@ tag CustomNotifications < NotificationsShow
                 to transform: translateY(0)
 
 # Use your custom component
-const notifications = new NotificationsState(imba.commit)
-imba.mount <CustomNotifications state=notifications>
+const notifications = new Notifications!
+imba.mount <custom-notifications state=notifications>
 
 tag App
     <self>
-        <button @click=notifications.success('Custom', 'This uses custom styling')> "Show Notification"
+        <button @click=notifications.success({header:'Custom', text:'This uses custom styling'})> "Show Notification"
 
 imba.mount <App>
 ```
 
-### 🎯 Modifying Specific Classes
+### 🎯 Modifying Globally
 
-To target specific notification types with different styles:
+The built in selectors can be overridden globally the following way:
 
 ```imba
-tag CustomNotifications < NotificationsShow
-    css
-        # Success notifications
-        .container:has(.header-icon-success)
-            bgc:light-dark(green/10, lime/10)
-            bd:1px solid light-dark(green/30, lime/30)
-        
-        # Error notifications
-        .container:has(.header-icon-error)
-            bgc:light-dark(red/10, crimson/10)
-            bd:1px solid light-dark(red/30, crimson/30)
+global css
+    notifications-center@not(#_)
+        .container
+            rd:10px
 ```
 
 ### 📋 Available CSS Classes
@@ -211,29 +205,32 @@ def myAsyncFunction
 
 ### 🎭 Icons
 
-The package exports SVG icons that you can use in your application:
+The package exports icons as SVG body that you can use in your application.
 
 ```imba
 import { 
-    SuccessIcon, 
-    InfoIcon, 
-    CautionIcon, 
-    ErrorIcon, 
-    CloseIcon 
+    icon-success, 
+    icon-info, 
+    icon-caution, 
+    icon-error, 
+    icon-close 
 } from 'imba-notifications'
 
 tag MyComponent
     <self>
         css d:hcc
-        <SuccessIcon [fill:emerald5]>
-        <InfoIcon>
-            css fill:orange
-        <CautionIcon>
+        <svg viewBox="0 0 256 256"> 
+            <{icon-success} [fill:emerald5]>
+        <svg viewBox="0 0 256 256"> 
+            css fill:green
+            <{icon-info}>
+        <svg viewBox="0 0 256 256"> 
             css fill:orange w:32px
-        <ErrorIcon>
-            css w:"16px"
-        <CloseIcon>
-            css bgc:blue fill:white
+            <{icon-caution}>
+        <svg [w:16px] viewBox="0 0 256 256"> 
+            <icon-error>
+        <svg [bgc:blue fill:white] viewBox="0 0 256 256"> 
+            <{icon-close}>
 ```
 
 All icons are SVG-based and can be styled using Imba's CSS syntax.
