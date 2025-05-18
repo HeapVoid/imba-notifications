@@ -60,18 +60,29 @@ export class Notifications
 # --------------------------------------------------
 # Icons
 # --------------------------------------------------
-export const icon-success =	<path d="M173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z">
-export const icon-info = <path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm16-40a8,8,0,0,1-8,8,16,16,0,0,1-16-16V128a8,8,0,0,1,0-16,16,16,0,0,1,16,16v40A8,8,0,0,1,144,176ZM112,84a12,12,0,1,1,12,12A12,12,0,0,1,112,84Z">
-export const icon-caution = <path d="M236.8,188.09,149.35,36.22h0a24.76,24.76,0,0,0-42.7,0L19.2,188.09a23.51,23.51,0,0,0,0,23.72A24.35,24.35,0,0,0,40.55,224h174.9a24.35,24.35,0,0,0,21.33-12.19A23.51,23.51,0,0,0,236.8,188.09ZM222.93,203.8a8.5,8.5,0,0,1-7.48,4.2H40.55a8.5,8.5,0,0,1-7.48-4.2,7.59,7.59,0,0,1,0-7.72L120.52,44.21a8.75,8.75,0,0,1,15,0l87.45,151.87A7.59,7.59,0,0,1,222.93,203.8ZM120,144V104a8,8,0,0,1,16,0v40a8,8,0,0,1-16,0Zm20,36a12,12,0,1,1-12-12A12,12,0,0,1,140,180Z">
-export const icon-error = <path d="M165.66,101.66,139.31,128l26.35,26.34a8,8,0,0,1-11.32,11.32L128,139.31l-26.34,26.35a8,8,0,0,1-11.32-11.32L116.69,128,90.34,101.66a8,8,0,0,1,11.32-11.32L128,116.69l26.34-26.35a8,8,0,0,1,11.32,11.32ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z">
-export const icon-close = <path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z">
+tag IconSuccess 
+	<self><svg viewBox="0 0 256 256"><path d="M173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z">
+tag IconInfo
+	<self><svg viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm16-40a8,8,0,0,1-8,8,16,16,0,0,1-16-16V128a8,8,0,0,1,0-16,16,16,0,0,1,16,16v40A8,8,0,0,1,144,176ZM112,84a12,12,0,1,1,12,12A12,12,0,0,1,112,84Z">
+tag IconCaution
+	<self><svg viewBox="0 0 256 256"><path d="M236.8,188.09,149.35,36.22h0a24.76,24.76,0,0,0-42.7,0L19.2,188.09a23.51,23.51,0,0,0,0,23.72A24.35,24.35,0,0,0,40.55,224h174.9a24.35,24.35,0,0,0,21.33-12.19A23.51,23.51,0,0,0,236.8,188.09ZM222.93,203.8a8.5,8.5,0,0,1-7.48,4.2H40.55a8.5,8.5,0,0,1-7.48-4.2,7.59,7.59,0,0,1,0-7.72L120.52,44.21a8.75,8.75,0,0,1,15,0l87.45,151.87A7.59,7.59,0,0,1,222.93,203.8ZM120,144V104a8,8,0,0,1,16,0v40a8,8,0,0,1-16,0Zm20,36a12,12,0,1,1-12-12A12,12,0,0,1,140,180Z">
+tag IconError
+	<self><svg viewBox="0 0 256 256"><path d="M165.66,101.66,139.31,128l26.35,26.34a8,8,0,0,1-11.32,11.32L128,139.31l-26.34,26.35a8,8,0,0,1-11.32-11.32L116.69,128,90.34,101.66a8,8,0,0,1,11.32-11.32L128,116.69l26.34-26.35a8,8,0,0,1,11.32,11.32ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z">
+tag IconClose
+	<self><svg viewBox="0 0 256 256"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z">
+
+tag icon-success < IconSuccess
+tag icon-info < IconInfo
+tag icon-caution < IconCaution
+tag icon-error < IconError
+tag icon-close < IconClose
 
 # --------------------------------------------------
 # Visual component to display notifications
 # --------------------------------------------------
-tag notifications-center
+tag notification-center
 	state
-	svgs = [icon-success, icon-info, icon-caution, icon-error, icon-close]
+	icons = [IconSuccess, IconInfo, IconCaution, IconError, IconClose]
 	type = ['success', 'info', 'caution', 'error']
 
 	def mount
@@ -84,7 +95,7 @@ tag notifications-center
 		style.setProperty("--expand", "{state.duration.expand || 200}ms")
 
 	css
-		.container 
+		.notification
 			pos:rel
 			d:grid tween:grid-template-rows var(--wipe) ease
 			pe:auto cursor:default
@@ -92,40 +103,36 @@ tag notifications-center
 			backdrop-filter: blur(20px)
 			bgc:light-dark(black/8, white/10)
 			bd:1px solid light-dark(black/16, white/20)
-		.header-container 
+		.header 
 			d:hcc m:10px
-		.header-text 
+		.icon 
+			w:24px
+			@.success fill:light-dark(#1b9023,#61e16a)
+			@.info fill:light-dark(#0b46b3,#49bfff)
+			@.caution fill:light-dark(#cf9400,#faff5b)
+			@.error fill:light-dark(#ac0000,#ff3b1d)
+		.title 
 			ml:10px 
 			fs:15px fw:normal 
 			c:light-dark(black, white)
-		.header-icon 
-			w:24px
-		.header-icon-success 
-			fill:light-dark(#1b9023,#61e16a)
-		.header-icon-info 
-			fill:light-dark(#0b46b3,#49bfff)
-		.header-icon-caution 
-			fill:light-dark(#cf9400,#faff5b)
-		.header-icon-error 
-			fill:light-dark(#ac0000,#ff3b1d)
-		.header-close 
+		.close 
 			ml:auto w:26px h:26px p:5px rd:4px 
 			cursor:pointer 
 			fill:light-dark(black, white) 
 			bgc@hover:light-dark(black/20, white/20)
-		.body-container 
+		.content
 			d:grid tween:grid-template-rows var(--expand) ease
 			ml:44px mr:36px
-		.body-text 
+		.text 
 			fs:12px fw:normal 
 			c:light-dark(black/80, white/60)
-		.body-details 
+		.details 
 			w:100% mt:15px p:10px rd:4px
 			bgc:light-dark(black/5, white/10) 
 			fs:11px fw:normal
 			c:light-dark(black, white/90)
 			overflow-wrap:break-word word-wrap:break-word ws:normal
-		.body-footer
+		.footer
 			mb:15px
 		.timer 
 			pos:rel 
@@ -159,22 +166,19 @@ tag notifications-center
 			@keyframes wipe
 				to my:0 py:0 bd:0px
 
-	<self [bgc:transparent h:100vh pe:none d:vflex zi:10000 pos:fixed]>
-		css w:320px r:0
+	<self [bgc:transparent h:100vh pe:none d:vflex zi:10000 pos:fixed r:0]>
 		for notification in state.queue
-			<div.container .{notification.state} @click=notification.click>
-				<div [of:hidden d:vflex]>
-					<div.header-container>
-						<svg.header-icon .{"header-icon-{type[notification.type]}"} viewBox="0 0 256 256">
-							<{svgs[notification.type]}>
-						<div.header-text> notification.header
-						<svg.header-close @click.trap=notification.hide viewBox="0 0 256 256"> 
-							<{svgs[4]}>
-					<div.body-container [gtr:1fr]=notification.clicked [gtr:0fr]=!notification.clicked>
-						<div [of:hidden]>
-							<div.body-text> notification.text
+			<div.notification .{notification.state} @click=notification.click>
+				<div.wrapper [of:hidden d:vflex]>
+					<div.header>
+						<{icons[notification.type]}.icon .{type[notification.type]}>
+						<div.title> notification.header
+						<{icons[4]}.close @click.trap=notification.hide>
+					<div.content [gtr:1fr]=notification.clicked [gtr:0fr]=!notification.clicked>
+						<div.wrapper [of:hidden]>
+							<div.text> notification.text
 							if notification.details
-								<div.body-details> notification.details
-							<div.body-footer>
+								<div.details> notification.details
+							<div.footer>
 					if !notification.clicked
 						<div.timer [py@off:0px my@off:0px h@off:0px ead:var(--expand)] ease> state.hint
