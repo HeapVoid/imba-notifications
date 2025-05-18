@@ -31,7 +31,7 @@ const notify = new Notifications!
 # Define the hint over the progress bar (could be empty)
 notify.hint = 'Click the message to avoid timeout and view details'
 # Mount notifications center separately from the main application tag
-imba.mount <notifications-center state=notify>
+imba.mount <notification-center state=notify>
 
 # In your main app or component
 tag App
@@ -82,10 +82,10 @@ Parameters:
 
 ### NotificationsShow Component
 
-The `<notifications-center>` tag is responsible for rendering notifications from a given Notifications class instance.
+The `<notification-center>` tag is responsible for rendering notifications from a given Notifications class instance.
 
 ```imba
-imba.mount <notifications-center state=notifications>
+imba.mount <notification-center state=notifications>
 ```
 
 ## ⚙️ Customization
@@ -120,7 +120,7 @@ To customize the notification component, create a new tag that inherits from the
 import { Notifications } from 'imba-notifications'
 
 # Create a custom notifications component
-tag custom-notifications < notifications-center
+tag custom-notifications < notification-center
     # Override CSS definitions
     css
         .container
@@ -163,27 +163,102 @@ The built in selectors can be overridden globally the following way:
 
 ```imba
 global css
-    notifications-center@not(#_)
-        .container
-            rd:10px
+    notification-center@not(#_)
+        w:350px
+        > .notification
+            > .wrapper
+                > .header
+                    > .icon
+                        @.success
+                        @.info
+                        @.caution
+                        @.error
+                    > .title
+                    > .close
+                > .content
+                    > .wrapper
+                        > .text
+                        > .details
+                        > .footer
+            > .timer
 ```
 
 ### 📋 Available CSS Classes
 
 The notification component uses the following CSS classes that you can customize:
 
-- `.container` - Main notification message container
-- `.header-container` - Header section containing icon, title and close button (cross icon)
-- `.header-text` - Notification title text
-- `.header-icon` - Base class for all notification type icons
-- `.header-icon-success`, `.header-icon-info`, `.header-icon-caution`, `.header-icon-error` - Type-specific icon classes
-- `.header-close` - Close button
-- `.body-container` - Container for notification body (shown when clicked)
-- `.body-text` - Main notification message text
-- `.body-details` - Detailed information container
-- `.body-footer` - Used mainly as a bottom margin of the body
-- `.timer` - The timeout containing the hint text and progress bar (before clicked)
-- `.show`, `.hide`, `.wipe` - Animation state classes
+```imba
+    .notification
+        pos:rel
+        d:grid tween:grid-template-rows var(--wipe) ease
+        pe:auto cursor:default
+        mt:10px mr:10px rd:5px
+        backdrop-filter: blur(20px)
+        bgc:light-dark(black/8, white/10)
+        bd:1px solid light-dark(black/16, white/20)
+    .header 
+        d:hcc m:10px
+    .icon 
+        w:24px
+        @.success fill:light-dark(#1b9023,#61e16a)
+        @.info fill:light-dark(#0b46b3,#49bfff)
+        @.caution fill:light-dark(#cf9400,#faff5b)
+        @.error fill:light-dark(#ac0000,#ff3b1d)
+    .title 
+        ml:10px 
+        fs:15px fw:normal 
+        c:light-dark(black, white)
+    .close 
+        ml:auto w:26px h:26px p:5px rd:4px 
+        cursor:pointer 
+        fill:light-dark(black, white) 
+        bgc@hover:light-dark(black/20, white/20)
+    .content
+        d:grid tween:grid-template-rows var(--expand) ease
+        ml:44px mr:36px
+    .text 
+        fs:12px fw:normal 
+        c:light-dark(black/80, white/60)
+    .details 
+        w:100% mt:15px p:10px rd:4px
+        bgc:light-dark(black/5, white/10) 
+        fs:11px fw:normal
+        c:light-dark(black, white/90)
+        overflow-wrap:break-word word-wrap:break-word ws:normal
+    .footer
+        mb:15px
+    .timer 
+        pos:rel 
+        px:10px py:2px w:100% ta:center
+        fs:11px fw:normal ws:nowrap of:hidden tof:ellipsis
+        c:light-dark(black/70, white/70)
+        bgc:light-dark(black/5, white/10)
+        @before
+            content: ''
+            pos:abs h:100% t:0 l:0
+            bgc:light-dark(black/5, white/10)
+            animation: progress calc(var(--show) + var(--display)) linear forwards
+            @keyframes progress
+                from w:0%
+                to w:100%
+
+    .show
+        gtr: 1fr
+        animation: show var(--show) ease
+        @keyframes show	
+            from transform: translateX(100%)
+    .hide
+        gtr: 1fr
+        animation: hide var(--hide) ease forwards
+        @keyframes hide
+            to transform: translateX(100%) mr:0px
+    .wipe
+        transform: translateX(100%) mr:0px
+        gtr: 0fr 
+        animation: wipe var(--wipe) ease forwards
+        @keyframes wipe
+            to my:0 py:0 bd:0px
+```
 
 ## 🧰 Additional Function and Icons
 
@@ -205,32 +280,16 @@ def myAsyncFunction
 
 ### 🎭 Icons
 
-The package exports icons as SVG body that you can use in your application.
+The package exports 5 icons that you can use in your application without any additional dependencies or imports.
 
 ```imba
-import { 
-    icon-success, 
-    icon-info, 
-    icon-caution, 
-    icon-error, 
-    icon-close 
-} from 'imba-notifications'
-
 tag MyComponent
     <self>
-        css d:hcc
-        <svg viewBox="0 0 256 256"> 
-            <{icon-success} [fill:emerald5]>
-        <svg viewBox="0 0 256 256"> 
-            css fill:green
-            <{icon-info}>
-        <svg viewBox="0 0 256 256"> 
-            css fill:orange w:32px
-            <{icon-caution}>
-        <svg [w:16px] viewBox="0 0 256 256"> 
-            <icon-error>
-        <svg [bgc:blue fill:white] viewBox="0 0 256 256"> 
-            <{icon-close}>
+        <icon-success> 
+        <icon-info> 
+        <icon-caution> 
+        <icon-error> 
+        <icon-close> 
 ```
 
 All icons are SVG-based and can be styled using Imba's CSS syntax.
